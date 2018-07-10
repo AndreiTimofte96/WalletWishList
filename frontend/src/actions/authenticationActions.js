@@ -13,7 +13,7 @@ export function login(email, password, props) {
     })
       .then(response => {
         
-        console.log(response);
+        // console.log(response);
         if (response.data.success == true) {
           localStorage.setItem('wallet_token', response.data.token);
           dispatch(setLoginPending(false));

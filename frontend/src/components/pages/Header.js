@@ -18,7 +18,7 @@ export default class Header extends Component{
             <div className="float-left">
                 
                 <NavLink to="/homepage" className="navLinks"> <i className="fas fa-grin-hearts"/>Wish List</NavLink>
-                <NavLink to="/history" className="navLinks"> <i className="fas fa-wallet"/> Wallet History</NavLink>
+                <NavLink to="/history" className="navLinks"> <i className="fas fa-wallet"/> Finished List</NavLink>
             </div>
             <div className="float-right">
                 <div className="user"> <i className="fas fa-user"/> Costel</div>

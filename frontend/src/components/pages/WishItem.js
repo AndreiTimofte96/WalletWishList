@@ -10,7 +10,7 @@ export default class WishItem extends Component{
     render(){
 
         const {type, wish} = this.props;
-        const {wish_text, status, amount, added_on, wish_id} = wish;
+        const {wish_text, status, amount, added_on, wish_id, finished_on} = wish;
 
         return(
             <div className="wish-item">
@@ -21,7 +21,7 @@ export default class WishItem extends Component{
                     
                     {status === "not_started" && <div><i className="far fa-times-circle"/></div>}
                     {status === "in_progress" && <div><i className="fas fa-spinner"/></div>}
-                    
+                    {status === "finished" && <div><i className="far fa-check-circle"/></div>}
                 </div>
                 
                 
@@ -30,7 +30,7 @@ export default class WishItem extends Component{
                     <div className="history">Wish added on: {added_on}</div>
 
                     {type === "finished" && 
-                        <div className="history">Wish finished on: 2018/06/03 16:50:34</div>
+                        <div className="history">Wish finished on: {finished_on}</div>
                     }
                     
                     {type !== "finished" &&     

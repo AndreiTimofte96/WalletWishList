@@ -11,11 +11,18 @@ module.exports = (() => {
       super(Extension, 'wishes');
     }
 
-    where({ wish_id, id }) {
+    where({ wish_id, id, finished }) {
       let whereClause = squel.expr();
 
-      
-      if (id && wish_id === undefined) {
+
+      console.log(id, finished);
+      if (id && finished){
+
+        console.log("INHEREEEEEEEEEEEEE");
+        whereClause = whereClause.and('user_id = ?', id).and('status = ?', 'finished');
+      }
+
+      if (id && wish_id === undefined && finished === undefined) {
         whereClause = whereClause.and('user_id = ?', id).and('status != ?', 'finished');
       }
 

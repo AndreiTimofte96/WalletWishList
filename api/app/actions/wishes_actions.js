@@ -36,6 +36,19 @@ module.exports = (() => {
       });
   };
 
+  const finishedWishes_action = ({
+    id
+  }) => {
+
+    return new Wish()
+      .field('*')
+      .where({ id, finished: true })
+      .valueOf()
+      .then((response) => {
+        return response;
+      });
+  };
+
   const editWish_action = ({
     wish_id,
     wish_text,
@@ -127,6 +140,7 @@ module.exports = (() => {
     allWishes_action,
     editWish_action,
     changeStatus_action,
-    deleteWish_action
+    deleteWish_action,
+    finishedWishes_action
   };
 })();

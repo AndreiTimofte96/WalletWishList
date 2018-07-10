@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const { singleBook, allBooks } = require('./app/routes/book_routes');
-const { addWish, allWishes, editWish, changeStatus, deleteWish } = require('./app/routes/wishes_routes');
+const { addWish, allWishes, editWish, changeStatus, deleteWish, finishedWishes } = require('./app/routes/wishes_routes');
 const { authenticate, register, checkAuthenticated } = require('./app/routes/authenticate_routes');
 
 
@@ -42,6 +42,7 @@ apiRoutes.get('/books/:id', singleBook);
 apiRoutes.post('/add_wish', addWish);
 apiRoutes.post('/delete_wish', deleteWish);
 apiRoutes.get('/wishes', allWishes);
+apiRoutes.get('/finished_wishes', finishedWishes);
 apiRoutes.post('/edit_wish', editWish);
 apiRoutes.post('/change_status', changeStatus);
 

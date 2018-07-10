@@ -2,7 +2,7 @@ module.exports = (() => {
   'use strict';
 
 
-  const { addWish_action, allWishes_action, editWish_action, changeStatus_action, deleteWish_action } = require('../actions/wishes_actions');
+  const { addWish_action, allWishes_action, editWish_action, changeStatus_action, deleteWish_action, finishedWishes_action } = require('../actions/wishes_actions');
 
   const addWish = (req, res) => {
     const { body } = req;
@@ -23,6 +23,16 @@ module.exports = (() => {
     const { id } = req.decoded.user;
 
     allWishes_action({
+      id
+    }).then((wishes) => {
+      res.json({ success: true, wishes });
+    });
+  };
+
+  const finishedWishes = (req, res) => {
+    const { id } = req.decoded.user;
+    
+    finishedWishes_action({
       id
     }).then((wishes) => {
       res.json({ success: true, wishes });
@@ -81,6 +91,7 @@ module.exports = (() => {
     allWishes,
     editWish,
     changeStatus,
-    deleteWish
+    deleteWish,
+    finishedWishes
   };
 })();
