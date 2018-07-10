@@ -10,14 +10,27 @@ export default class Popup extends Component{
         const {text, type} = this.props;
 
 
+        if (type === "warning"){
+            return(
+                <div className="popup-wrapper"> 
+                    <div className="popup small-text">
+                        {text}
+                        <div className="buttons">
+                            <div className="button" onClick={this.props.closePopup}> Ok! </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         if (type === "question"){
             return(
                 <div className="popup-wrapper"> 
                     <div className="popup">
                         {text}
                         <div className="buttons">
-                            <div className="button"> Yes! </div>
-                            <div className="button"> No! </div>
+                            <div className="button" onClick={()=>{this.props.handleAnswer("yes");}}> Yes! </div>
+                            <div className="button" onClick={()=>{this.props.handleAnswer("no");}}> No! </div>
                         </div>
                     </div>
                 </div>
