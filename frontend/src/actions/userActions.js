@@ -12,7 +12,7 @@ export function getUserInfo() {
     axios.get(`${API_URL}/user_info?token=${token}`)
       .then(response => {
         
-        // console.log(response);
+        
         if (response.data.success == true) {
           dispatch(setUserPending(false));
           dispatch(setUserSuccess(true, response.data.userInfo));

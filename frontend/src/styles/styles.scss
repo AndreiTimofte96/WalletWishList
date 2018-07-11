@@ -115,12 +115,12 @@ body {
 
 .btn:hover{
   background-color: rgba(0, 0, 0, 0.4) !important;
-  border: 1px solid #2C99F1 !important;
-  color: #2C99F1 !important;
+  border: 1px solid #00BFFF !important;
+  color: #00BFFF !important;
 }
 
 .forgot-password:hover{
-  color: #2C99F1!important;
+  color: #00BFFF!important;
 }
 
 #preloader {
@@ -200,7 +200,7 @@ body {
 
 .header-container .logo{
   height: 80px;
-  background-color: #2C99F1;
+  background-color: #00BFFF;
 }
 
 
@@ -228,13 +228,13 @@ body {
 
 
 .header-container .navLinks:hover{
-  color: #2C99F1;
+  color: #00BFFF;
 
 }
 
 .navLinks.active{
-  color: #2C99F1 !important;
-  border-bottom: 2px solid #2C99F1;
+  color: #00BFFF !important;
+  border-bottom: 2px solid #00BFFF;
 }
 ///////////////////////////////////////////HEADER_END/////////////
 
@@ -287,7 +287,7 @@ body {
 
 .homepage .input input:focus{
 
-  border: 2px solid #2C99F1;
+  border: 2px solid #00BFFF;
 }
 
 .homepage .input .money{
@@ -301,14 +301,14 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 5px;
-  border: 2px solid #2C99F1;
+  border: 2px solid #00BFFF;
   cursor: pointer;
 }
 
 
 .homepage .add-button:hover{
   color: #fff;
-  background-color: #2C99F1;
+  background-color: #00BFFF;
   border: 2px solid #fff;
 }
 
@@ -323,7 +323,7 @@ body {
 
   border: 2px solid #fff;
   margin: auto;
-  // background-color: #2C99F1;
+  // background-color: #00BFFF;
   background-color: rgba(0, 0, 0, 0.8);
   margin-top: 20px;
   border-radius: 5px;
@@ -339,7 +339,7 @@ body {
   padding: 10px;
   display: inline-flex;
   float: left;
-  // color: #2C99F1;
+  // color: #00BFFF;
 }
 
 
@@ -370,7 +370,7 @@ body {
 
 .homepage .wish-item .control .buttons .button{
   border-radius: 5px;
-  border: 1px solid #2C99F1;
+  border: 1px solid #00BFFF;
   padding: 2px;
   font-size: 14px;
   margin-left: 10px;
@@ -378,13 +378,13 @@ body {
 }
 
 .homepage .wish-item .control .buttons .button:hover{
-  background-color: #2C99F1;
+  background-color: #00BFFF;
   border: 1px solid #fff;
   color: #fff;
 }
 
 .homepage .wish-item .text .color-blue{
-  color: #2C99F1 !important;
+  color: #00BFFF !important;
 }
 
 .homepage .stats{
@@ -420,7 +420,7 @@ body {
 }
 
 .history .title{
-  color: #2C99F1;
+  color: #00BFFF;
   font-size: 30px;
   background: rgba(0, 0, 0, 0.6);
   width: 800px;
@@ -444,7 +444,7 @@ body {
 
 .popup{
   font-size: 25px;
-  background-color: #2C99F1;
+  background-color: #00BFFF;
   border: 2px dotted #fff;
   color: #fff;
   position: absolute;
@@ -478,13 +478,13 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 5px;
-  border: 2px solid #2C99F1;
+  border: 2px solid #00BFFF;
   cursor: pointer;
   font-size: 20px;
 }
 
 .popup .button:hover{
-  color: #2C99F1;
+  color: #00BFFF;
 }
 
 ///////////////////////////////////////////POPUP_END/////////////
