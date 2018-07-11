@@ -22,6 +22,7 @@ module.exports = (() => {
   const allWishes = (req, res) => {
     const { id } = req.decoded.user;
 
+    console.log("ALL WISHES ID", id);
     allWishes_action({
       id
     }).then((wishes) => {

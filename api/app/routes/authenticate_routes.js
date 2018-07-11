@@ -73,6 +73,8 @@ module.exports = (() => {
 
     const { id } = req.decoded.user;
 
+    console.log("USER INFO ID", id);
+
     getUser({
       id
     }).then((response) => {

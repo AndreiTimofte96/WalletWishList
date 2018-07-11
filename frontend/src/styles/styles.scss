@@ -232,6 +232,14 @@ body {
 
 }
 
+.header-container .logout{
+  cursor: pointer;
+}
+
+.header-container .logout:hover{
+  color: #00BFFF !important;
+}
+
 .navLinks.active{
   color: #00BFFF !important;
   border-bottom: 2px solid #00BFFF;

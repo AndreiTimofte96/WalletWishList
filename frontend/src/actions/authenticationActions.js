@@ -15,7 +15,7 @@ export function login(email, password, props) {
         
         // console.log(response);
         if (response.data.success == true) {
-          localStorage.setItem('wallet_token', response.data.token);
+          localStorage.setItem('wishList_token', response.data.token);
           dispatch(setLoginPending(false));
           dispatch(setLoginSuccess(true));
           props.history.push("/homepage");

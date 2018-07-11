@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Header from '../../components/pages/Header';
 import WishItem from '../../components/pages/WishItem';
-import { getFinishedWishes } from '../../actions/historyActions';
+import { getFinishedWishes, checkAuth } from '../../actions/historyActions';
 import { getUserInfo } from '../../actions/userActions';
 import Loader from '../../components/utils/Loader';
 
@@ -12,6 +12,10 @@ class History extends Component {
         super(props);
     }
 
+    componentWillMount(){
+        const token = localStorage.getItem("wishList_token");
+        this.props.checkAuth(token, this.props);
+    }
 
     componentDidMount(){
         this.props.getUserInfo();
@@ -24,7 +28,7 @@ class History extends Component {
         if (isWishesPending === true) {
             return (
                 <div className="homepage-container">
-                    <Header />
+                    <Header history={this.props.history}/>
                     <Loader/>
                 </div>
             );
@@ -32,7 +36,7 @@ class History extends Component {
 
         return (
             <div className="homepage-container">
-                <Header userName={userInfo ? userInfo.userName : null}/>
+                <Header history={this.props.history} userName={userInfo ? userInfo.userName : null}/>
 
                 <div className="homepage history">
                     <div className="title"> Finished total: {totalSum} lei </div>
@@ -71,7 +75,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         getFinishedWishes,
-        getUserInfo
+        getUserInfo,
+        checkAuth
     }, dispatch);
 }
 

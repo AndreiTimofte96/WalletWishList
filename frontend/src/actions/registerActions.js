@@ -7,9 +7,7 @@ export function register(mail, password, userName, props) {
   return dispatch => {
     dispatch(setRegisterPending(true));
 
-    console.log(typeof mail);
-    console.log(typeof password);
-    console.log(typeof userName);
+    
     axios.post(`${API_URL}/register`, {
        mail,
        password,
@@ -17,7 +15,7 @@ export function register(mail, password, userName, props) {
     })
       .then(response => {
         
-        console.log(response);
+        // console.log(response);
         if (response.data.success == true) {
           dispatch(setRegisterPending(false));
           dispatch(setRegisterSuccess(true));

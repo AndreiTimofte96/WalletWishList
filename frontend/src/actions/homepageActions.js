@@ -5,7 +5,7 @@ const API_URL = 'http://0.0.0.0:2222/api';
 
 export function getWishes() {
 
-  const token = localStorage.getItem('wallet_token');
+  const token = localStorage.getItem('wishList_token');
   return dispatch => {
     dispatch(setWishesPending(true));
 
@@ -39,7 +39,7 @@ export function getWishes() {
 
 export function addWish(newWish) {
 
-  const token = localStorage.getItem('wallet_token');
+  const token = localStorage.getItem('wishList_token');
   return dispatch => {
     dispatch(setAddWishPending(true));
 
@@ -60,7 +60,7 @@ export function addWish(newWish) {
 
 export function deleteWish(object) {
 
-  const token = localStorage.getItem('wallet_token');
+  const token = localStorage.getItem('wishList_token');
   return dispatch => {
     dispatch(setAddWishPending(true));
 
@@ -81,7 +81,7 @@ export function deleteWish(object) {
 
 export function changeStatus(object) {
 
-  const token = localStorage.getItem('wallet_token');
+  const token = localStorage.getItem('wishList_token');
   return dispatch => {
     dispatch(setAddWishPending(true));
 
@@ -99,6 +99,51 @@ export function changeStatus(object) {
       });
   };
 }
+
+
+export function checkAuth(token, props) {
+
+	return dispatch => {
+
+    if (token === null){
+      dispatch(userNotAuthenticated(false));
+			props.history.push("/login");
+    }
+    else{
+      axios.get(`${API_URL}/wishes?token=${token}`)
+      .then(response => {
+
+        if (response.data.success == true) {
+            dispatch(userAuthenticated(true));
+        } else {
+            dispatch(userNotAuthenticated(false));
+            localStorage.removeItem('wishList_token');
+            props.history.push("/login");  
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          localStorage.removeItem('wishList_token');
+          props.history.push('/login');
+        }
+      });
+    }
+	};
+}
+
+export const userAuthenticated = (userIsAuthenticated) => {
+	return {
+		type: types.USER_AUTHENTICATED,
+		userIsAuthenticated
+	};
+};
+
+export const userNotAuthenticated = (userNotAuthenticated) => {
+	return {
+		type: types.USER_NOT_AUTHENTICATED,
+		userNotAuthenticated
+	};
+};
 
 export const setWishesSuccess = (isWishesSuccess, wishes, startedSum, inProgressSum) => {
   return {

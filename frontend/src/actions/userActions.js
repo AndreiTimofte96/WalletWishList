@@ -5,7 +5,7 @@ const API_URL = 'http://0.0.0.0:2222/api';
 
 export function getUserInfo() {
 
-  const token = localStorage.getItem('wallet_token');
+  const token = localStorage.getItem('wishList_token');
   return dispatch => {
     dispatch(setUserPending(true));
 

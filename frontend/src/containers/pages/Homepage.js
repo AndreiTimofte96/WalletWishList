@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import Header from '../../components/pages/Header';
 import WishItem from '../../components/pages/WishItem';
 import Loader from '../../components/utils/Loader';
-import { getWishes, addWish, deleteWish, changeStatus } from '../../actions/homepageActions';
+import { getWishes, addWish, deleteWish, changeStatus, checkAuth } from '../../actions/homepageActions';
 import { getUserInfo } from '../../actions/userActions';
 import Popup from '../../components/utils/Popup';
 import getCurrentFormattedTime from '../../utils/dateUtils';
@@ -31,6 +31,11 @@ class Homepage extends Component {
         this.handleDeleteWishAnswer = this.handleDeleteWishAnswer.bind(this);
         this.handleFinishWishAnswer = this.handleFinishWishAnswer.bind(this);
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
+    }
+
+    componentWillMount(){
+        const token = localStorage.getItem("wishList_token");
+        this.props.checkAuth(token, this.props);
     }
 
     componentDidMount() {
@@ -117,7 +122,7 @@ class Homepage extends Component {
         if (isWishesPending === true) {
             return (
                 <div className="homepage-container">
-                    <Header/>
+                    <Header history={this.props.history}/>
                     <Loader />
                 </div>
             );
@@ -127,7 +132,7 @@ class Homepage extends Component {
         return (
             <div className="homepage-container">
                 
-                <Header userName={userInfo ? userInfo.userName : null}/>
+                <Header history={this.props.history} userName={userInfo ? userInfo.userName : null}/>
 
                 <div className="homepage">
                     <div className="stats">
@@ -201,7 +206,8 @@ function mapDispatchToProps(dispatch) {
         addWish,
         deleteWish,
         changeStatus,
-        getUserInfo
+        getUserInfo,
+        checkAuth
     }, dispatch);
 }
 
