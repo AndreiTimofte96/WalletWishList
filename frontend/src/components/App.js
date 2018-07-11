@@ -13,6 +13,7 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
           <Route path="/register" component={Register}/>
           <Route path="/homepage" component={Homepage}/>
           <Route path="/history" component={History}/>
