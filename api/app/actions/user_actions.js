@@ -18,7 +18,7 @@ module.exports = (() => {
       .then(() => {
         return true;
       });
-  };
+};
 
   const getUser = ({
     id,

@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 const { singleBook, allBooks } = require('./app/routes/book_routes');
 const { addWish, allWishes, editWish, changeStatus, deleteWish, finishedWishes } = require('./app/routes/wishes_routes');
-const { authenticate, register, checkAuthenticated } = require('./app/routes/authenticate_routes');
+const { authenticate, register, checkAuthenticated, userInfo } = require('./app/routes/authenticate_routes');
 
 
 // app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,6 +38,8 @@ apiRoutes.get('/', (req, res) => {
 
 apiRoutes.get('/books', allBooks);
 apiRoutes.get('/books/:id', singleBook);
+
+apiRoutes.get('/user_info', userInfo);
 
 apiRoutes.post('/add_wish', addWish);
 apiRoutes.post('/delete_wish', deleteWish);

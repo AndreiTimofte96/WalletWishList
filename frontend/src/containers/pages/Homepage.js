@@ -5,6 +5,7 @@ import Header from '../../components/pages/Header';
 import WishItem from '../../components/pages/WishItem';
 import Loader from '../../components/utils/Loader';
 import { getWishes, addWish, deleteWish, changeStatus } from '../../actions/homepageActions';
+import { getUserInfo } from '../../actions/userActions';
 import Popup from '../../components/utils/Popup';
 import getCurrentFormattedTime from '../../utils/dateUtils';
 
@@ -33,6 +34,7 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
+        this.props.getUserInfo();
         this.props.getWishes();
     }
 
@@ -70,7 +72,7 @@ class Homepage extends Component {
 
         if (status === "finished") {
 
-            this.setState({finishPopup: true, wish_id_fin: wish_id});
+            this.setState({ finishPopup: true, wish_id_fin: wish_id });
         }
         else {
             this.props.changeStatus({
@@ -84,15 +86,15 @@ class Homepage extends Component {
         this.setState({ deletePopup: true, wish_id_del: wish_id });
     }
 
-    handleFinishWishAnswer(answer){
+    handleFinishWishAnswer(answer) {
         if (answer === "yes") {
-             this.props.changeStatus({
+            this.props.changeStatus({
                 wish_id: this.state.wish_id_fin,
                 status: "finished",
                 finished_on: getCurrentFormattedTime()
             });
         }
-        this.setState({finishPopup: false});
+        this.setState({ finishPopup: false });
     }
 
     handleDeleteWishAnswer(answer) {
@@ -108,14 +110,14 @@ class Homepage extends Component {
 
     render() {
 
-        const { isWishesPending, wishes, startedSum, inProgressSum } = this.props;
+        const { isWishesPending, wishes, startedSum, inProgressSum, userInfo } = this.props;
         const { wish_text, amount, inputError, deletePopup, finishPopup } = this.state;
 
-
+        
         if (isWishesPending === true) {
             return (
                 <div className="homepage-container">
-                    <Header />
+                    <Header/>
                     <Loader />
                 </div>
             );
@@ -124,7 +126,8 @@ class Homepage extends Component {
 
         return (
             <div className="homepage-container">
-                <Header />
+                
+                <Header userName={userInfo ? userInfo.userName : null}/>
 
                 <div className="homepage">
                     <div className="stats">
@@ -161,7 +164,7 @@ class Homepage extends Component {
                         text={"Are you sure you want to finish this wish?"}
                         handleAnswer={this.handleFinishWishAnswer}
                     />
-                    }
+                }
                 {/* <Popup type="message" text={"Item was deleted!"}/> */}
 
                 {inputError === true &&
@@ -187,7 +190,8 @@ function mapStateToProps(state) {
         wishesErrorMessage: state.homepageReducer.errorMessage,
         wishes: state.homepageReducer.wishes,
         inProgressSum: state.homepageReducer.inProgressSum,
-        startedSum: state.homepageReducer.startedSum
+        startedSum: state.homepageReducer.startedSum,
+        userInfo: state.userReducer.userInfo
     };
 }
 
@@ -196,7 +200,8 @@ function mapDispatchToProps(dispatch) {
         getWishes,
         addWish,
         deleteWish,
-        changeStatus
+        changeStatus,
+        getUserInfo
     }, dispatch);
 }
 

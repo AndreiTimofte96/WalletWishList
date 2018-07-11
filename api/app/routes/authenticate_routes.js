@@ -69,9 +69,22 @@ module.exports = (() => {
     });
   };
 
+  const userInfo = (req, res) => {
+
+    const { id } = req.decoded.user;
+
+    getUser({
+      id
+    }).then((response) => {
+
+      res.json({ success: true, userInfo:{userName: response.userName }});
+    })
+  }
+
   return {
     authenticate,
     register,
-    checkAuthenticated
+    checkAuthenticated,
+    userInfo
   };
 })();
