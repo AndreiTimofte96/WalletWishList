@@ -32,7 +32,11 @@ module.exports = (() => {
       .where({ id })
       .valueOf()
       .then((response) => {
-        return response;
+        let newResponse = [];
+        for (let index = response.length - 1; index >= 0; index--){
+          newResponse.push(response[index]);
+        }
+        return newResponse;
       });
   };
 
@@ -45,7 +49,11 @@ module.exports = (() => {
       .where({ id, finished: true })
       .valueOf()
       .then((response) => {
-        return response;
+        let newResponse = [];
+        for (let index = response.length - 1; index >= 0; index--){
+          newResponse.push(response[index]);
+        }
+        return newResponse;
       });
   };
 
