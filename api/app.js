@@ -5,6 +5,7 @@ const chalk = require('chalk'); // pt colorare mesaje
 const debug = require('debug')('app');
 const bodyParser = require('body-parser');
 const morgan = require('morgan'); // afiseaza ce req sunt facute
+const cors = require('cors');
 
 
 const app = express();
@@ -17,6 +18,7 @@ const { authenticate, register, checkAuthenticated, userInfo } = require('./app/
 
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(morgan('tiny'));
 
 app.get('/', function (req, res) {

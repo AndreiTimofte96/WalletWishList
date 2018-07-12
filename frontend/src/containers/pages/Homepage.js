@@ -135,7 +135,7 @@ class Homepage extends Component {
                 <Header history={this.props.history} userName={userInfo ? userInfo.userName : null}/>
 
                 <div className="homepage">
-                    <div className="stats">
+                     <div className="stats">
                         <div> Not started: {startedSum} lei </div>
                         <div> In progress: {inProgressSum} lei </div>
                     </div>

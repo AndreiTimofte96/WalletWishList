@@ -227,6 +227,12 @@ body {
 }
 
 
+@media(max-width: 1000px){
+  .header-container .user{
+    margin: 0;
+  }
+}
+
 .header-container .navLinks:hover{
   color: #00BFFF;
 
@@ -239,6 +245,24 @@ body {
 .header-container .logout:hover{
   color: #00BFFF !important;
 }
+
+.header-container .menu-button{
+  margin: 0;
+}
+
+.header-container .menu-button.active{
+  color: #00BFFF !important;
+}
+
+.header-container .responsive-menu{
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    display: inline-grid;
+}
+
 
 .navLinks.active{
   color: #00BFFF !important;
@@ -265,7 +289,8 @@ body {
 
 .homepage-container .homepage{
 
-  height: calc(100vh - 80px);
+  // height: calc(100vh - 80px);
+  height: 100%;
   text-align: center;
   // position: relative;
   padding: 30px;
@@ -277,6 +302,37 @@ body {
 
 .homepage .input{
   display: inline-flex;
+  margin-bottom: 10px;
+}
+
+@media(max-width: 1000px){
+  .homepage .input input{
+    width: 150px !important;
+  }
+
+  .homepage .input .money{
+    width: 50px !important;
+  }
+
+  .homepage{
+    margin-right: 0 !important;
+  }
+
+  .homepage .wish-item .control .buttons .button{
+    margin-left: 0px !important;
+    margin-top: 10px;
+  }
+
+  .homepage .stats{
+      position: relative !important;
+      top: 0 !important;
+      margin-bottom: 10px;
+  }
+
+  .history .title{
+
+  }
+
 }
 
 .homepage .input input{
@@ -289,7 +345,7 @@ body {
   width: 300px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  padding:10px;
+  padding: 10px;
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -333,7 +389,7 @@ body {
   margin: auto;
   // background-color: #00BFFF;
   background-color: rgba(0, 0, 0, 0.8);
-  margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 5px;
   max-width: 800px;
   position: relative;
@@ -431,8 +487,9 @@ body {
   color: #00BFFF;
   font-size: 30px;
   background: rgba(0, 0, 0, 0.6);
-  width: 800px;
+  max-width: 800px;
   margin: auto;
+  margin-bottom: 10px;
   
 }
 
@@ -456,9 +513,11 @@ body {
   border: 2px dotted #fff;
   color: #fff;
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 50%;
+  left: 50%;
   width: 200px;
+  margin-top: -126px;
+  margin-left: -100px;
   text-align: center;
   padding: 20px;
 }
