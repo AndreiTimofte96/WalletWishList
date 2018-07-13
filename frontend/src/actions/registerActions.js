@@ -1,7 +1,9 @@
 import * as types from '../constants/actionTypes';
 import axios from 'axios';
+import { API_URL } from '../utils/apiUrl';
 
-const API_URL = 'http://0.0.0.0:2222';
+// const API_URL = 'http://0.0.0.0:2222';
+// const API_URL = 'http://192.168.100.5:2222';
 
 export function register(mail, password, userName, props) {
   return dispatch => {

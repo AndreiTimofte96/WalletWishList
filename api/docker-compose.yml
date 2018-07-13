@@ -17,6 +17,11 @@ services:
       - DB_PASSWORD=extension_api
   db:
     image: mysql:5.6
+    volumes:
+    # Use this option to persist the MySQL DBs in a shared volume.
+    - ./mysqldata:/var/lib/mysql:rw,delegated
+    # Use this option to persist the MySQL DBs in a data volume.
+    # - db_data:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:
@@ -24,8 +29,8 @@ services:
       - MYSQL_USER=extension_api
       - MYSQL_PASSWORD=extension_api
       - MYSQL_ROOT_PASSWORD=J4m432423ass
-    volumes:
-      - ./data:/var/lib/mysql
+    # volumes:
+    #   - ./data:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
@@ -35,3 +40,10 @@ services:
       MYSQL_ROOT_PASSWORD: J4m432423ass
     ports:
       - "8080:80"
+  
+  localtunnel:
+    image: efrecon/localtunnel
+    links:
+      - web
+    command:
+      --local-host web --port 4000 --subdomain wishlist-backend

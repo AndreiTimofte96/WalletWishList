@@ -332,7 +332,16 @@ body {
   .history .title{
 
   }
+}
 
+@media(max-width: 500px){
+  .homepage .input input{
+    width: 110px !important;
+  }
+
+  .homepage .input .money{
+    width: 80px !important;
+  }
 }
 
 .homepage .input input{

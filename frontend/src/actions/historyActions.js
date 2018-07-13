@@ -1,7 +1,9 @@
 import * as types from '../constants/actionTypes';
 import axios from 'axios';
+import { API_URL } from '../utils/apiUrl';
 
-const API_URL = 'http://0.0.0.0:2222/api';
+// const API_URL = 'http://0.0.0.0:2222/api';
+// const API_URL = 'http://192.168.100.5:2222/api';
 
 export function getFinishedWishes() {
 
@@ -9,7 +11,7 @@ export function getFinishedWishes() {
   return dispatch => {
     dispatch(setWishesPending(true));
 
-    axios.get(`${API_URL}/finished_wishes?token=${token}`)
+    axios.get(`${API_URL}/api/finished_wishes?token=${token}`)
       .then(response => {
 
         if (response.data.success == true) {
@@ -42,7 +44,7 @@ export function checkAuth(token, props) {
 			props.history.push("/login");
     }
     else{
-      axios.get(`${API_URL}/wishes?token=${token}`)
+      axios.get(`${API_URL}/api/wishes?token=${token}`)
       .then(response => {
 
         if (response.data.success == true) {

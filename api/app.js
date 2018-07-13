@@ -51,6 +51,6 @@ apiRoutes.post('/edit_wish', editWish);
 apiRoutes.post('/change_status', changeStatus);
 
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   debug(`listening at port ${chalk.green(PORT)}`);
 });

@@ -1,7 +1,9 @@
 import * as types from '../constants/actionTypes';
 import axios from 'axios';
+import { API_URL } from '../utils/apiUrl';
 
-const API_URL = 'http://0.0.0.0:2222/api';
+// const API_URL = 'http://0.0.0.0:2222/api';
+// const API_URL = 'http://192.168.100.5:2222/api';
 
 export function getUserInfo() {
 
@@ -9,7 +11,7 @@ export function getUserInfo() {
   return dispatch => {
     dispatch(setUserPending(true));
 
-    axios.get(`${API_URL}/user_info?token=${token}`)
+    axios.get(`${API_URL}/api/user_info?token=${token}`)
       .then(response => {
         
         

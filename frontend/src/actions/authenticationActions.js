@@ -1,7 +1,8 @@
 import * as types from '../constants/actionTypes';
 import axios from 'axios';
+import { API_URL } from '../utils/apiUrl';
 
-const API_URL = 'http://0.0.0.0:2222';
+// const API_URL = 'http://192.168.100.5:2222';
 
 export function login(email, password, props) {
   return dispatch => {
@@ -23,6 +24,10 @@ export function login(email, password, props) {
             dispatch(setLoginPending(false));
             dispatch(setLoginError(true, response.data.message));
         }
+      }).catch( () =>{
+
+        dispatch(setLoginPending(false));
+        dispatch(setLoginError(true, "Please try again later. Service not available!"));
       });
   };
 }

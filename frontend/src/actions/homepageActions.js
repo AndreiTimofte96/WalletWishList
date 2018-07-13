@@ -1,7 +1,9 @@
 import * as types from '../constants/actionTypes';
 import axios from 'axios';
+import { API_URL } from '../utils/apiUrl';
 
-const API_URL = 'http://0.0.0.0:2222/api';
+// const API_URL = 'http://0.0.0.0:2222/api';
+// const API_URL = 'http://192.168.100.5:2222/api';
 
 export function getWishes() {
 
@@ -9,7 +11,7 @@ export function getWishes() {
   return dispatch => {
     dispatch(setWishesPending(true));
 
-    axios.get(`${API_URL}/wishes?token=${token}`)
+    axios.get(`${API_URL}/api/wishes?token=${token}`)
       .then(response => {
 
 
@@ -43,7 +45,7 @@ export function addWish(newWish) {
   return dispatch => {
     dispatch(setAddWishPending(true));
 
-    axios.post(`${API_URL}/add_wish?token=${token}`, newWish)
+    axios.post(`${API_URL}/api/add_wish?token=${token}`, newWish)
       .then(response => {
         
         // console.log(response);
@@ -64,7 +66,7 @@ export function deleteWish(object) {
   return dispatch => {
     dispatch(setAddWishPending(true));
 
-    axios.post(`${API_URL}/delete_wish?token=${token}`, object)
+    axios.post(`${API_URL}/api/delete_wish?token=${token}`, object)
       .then(response => {
         
         // console.log(response);
@@ -85,7 +87,7 @@ export function changeStatus(object) {
   return dispatch => {
     dispatch(setAddWishPending(true));
 
-    axios.post(`${API_URL}/change_status?token=${token}`, object)
+    axios.post(`${API_URL}/api/change_status?token=${token}`, object)
       .then(response => {
         
         // console.log(response);
@@ -110,7 +112,7 @@ export function checkAuth(token, props) {
 			props.history.push("/login");
     }
     else{
-      axios.get(`${API_URL}/wishes?token=${token}`)
+      axios.get(`${API_URL}/api/wishes?token=${token}`)
       .then(response => {
 
         if (response.data.success == true) {
